@@ -6,9 +6,11 @@
 </head>
 <body>
 <h1>Welcome </h1>
-
-<p th:text="'PassWord: ' + ${login.getPassword()}" />
 <p th:text="'Welcome Your UserId: ' + ${login.getUserId()}" />
+<p th:text="'PassWord: ' + ${login.getPassword()}" />
+<p th:text="'Welcome Your UserId: ' + ${login.getName()}" />
+<p th:text="'Welcome Your emailId: ' + ${login.getEmail()}" />
+
 <a href="/login">Submit another message</a>
 </body>
 </html>
