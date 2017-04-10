@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Welcome </h1>
+<p th:text="'UserId: ' + ${registerUser.getUserId()}" />
+<p th:text="'Name : ' + ${registerUser.getName()}" />
+<p th:text="'PassWord: ' + ${registerUser.getPassword()}" />
+<p th:text="'Email Id : ' + ${registerUser.getEmail()}" />
+<p th:text="'Address : ' + ${registerUser.getAddress()}" />
+<a href="/register">Submit another message</a>
+</body>
+</html>

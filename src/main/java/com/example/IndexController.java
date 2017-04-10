@@ -36,6 +36,7 @@ public class IndexController {
         return "welcome";
     }
 
+
     @RequestMapping(value = "/greeting", method = RequestMethod.GET)
     public String greetingForm(Model model) {
         model.addAttribute("greeting", new Greeting());
@@ -49,6 +50,8 @@ public class IndexController {
         System.out.print("Second Call");
         return "result";
     }
+
+
 
 
 }
