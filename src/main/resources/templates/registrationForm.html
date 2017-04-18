@@ -7,8 +7,9 @@
 <h1>Login page</h1>
 <!--<p th:if="${registerError}">Wrong user or password</p>-->
 <form action="#" th:action="@{/registerUser}" th:object="${registerUser}" method="post">
-    <label for="username">Username</label>:
-    <input type="text" id="username" name="username" /> <br />
+
+    <label for="name">name</label>:
+    <input type="text" id="name" name="name"/> <br/>
 
     <label for="password">Password</label>:
     <input type="password" id="password" name="password" /> <br />

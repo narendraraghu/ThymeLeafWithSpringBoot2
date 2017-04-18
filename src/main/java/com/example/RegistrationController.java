@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.service.RegistrationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import service.RegistrationService;
+
 
 /**
  * Created by nara1016 on 10-04-2017.
@@ -17,10 +18,15 @@ import service.RegistrationService;
 @Controller
 public class RegistrationController {
 
-    @Autowired
+
     private RegistrationService registrationService ;
 
-  private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
+    @Autowired
+    public void setRegistrationService(RegistrationService registrationService) {
+        this.registrationService = registrationService;
+    }
+
+    private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -37,17 +43,36 @@ public class RegistrationController {
 
         try {
 
-            System.out.print("registerUser  "+registerUser.toString());
             registrationService.save(registerUser);
-            System.out.print("registerUser SAVED :) ");
+            System.out.print("getUserId  " + registerUser.getUserId() +
+                    " getName  " + registerUser.getName() +
+                    " getEmail  " + registerUser.getEmail() +
+                    " getPassword  " + registerUser.getPassword());
+
+            registerUser.setUserId(registerUser.getUserId());
+            registerUser.setEmail(registerUser.getEmail());
+            registerUser.setName(registerUser.getName());
+            registerUser.setPassword(registerUser.getPassword());
+            registerUser.setAddress(registerUser.getAddress());
+
+            final RegisterUser save = registrationService.save(registerUser);
+            System.out.print(" save  " + save);
+            System.out.print(" registerUser SAVED :) ");
 
         } catch (Exception e) {
-            logger.error("Error occurred while trying to process api request", e);
+            logger.error(" Error occurred while trying to process api request", e);
 
         }
 
         return "registrationSuccessful";
     }
 
+
+    @RequestMapping(value = "/registrationSuccessful", method = RequestMethod.GET)
+    public String getAllUser(Model model) {
+        model.addAttribute("registerUser", new RegisterUser());
+        System.out.print("Call to registerUser 1  ");
+        return "getUser";
+    }
 
 }

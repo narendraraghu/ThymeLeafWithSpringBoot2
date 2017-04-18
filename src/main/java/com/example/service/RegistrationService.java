@@ -1,7 +1,6 @@
-package service;
+package com.example.service;
 
 import com.example.RegisterUser;
-import org.springframework.stereotype.Service;
 
 public interface RegistrationService {
     RegisterUser save(RegisterUser apiRequest);

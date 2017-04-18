@@ -7,6 +7,7 @@ public class Login {
 
     private long UserId;
     private String password;
+    int accountNumber = 10_1222_2323;
 
 
     public long getUserId() {
